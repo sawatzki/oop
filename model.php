@@ -46,4 +46,16 @@ class Model
         }
     }
 
+    public function fetch(){
+        $data = null;
+
+        $query = "SELECT * FROM records";
+        if($sql = $this->conn->query($query)){
+            while($row = mysqli_fetch_assoc($sql)){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
 }
