@@ -7,5 +7,5 @@
 
     if($delete){
         echo "<script>alert('delete successfully!');</script>";
-        echo "<script>window.location.href = 'records.php'</script>";
+        echo "<script>window.location.href = 'index.php'</script>";
     }

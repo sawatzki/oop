@@ -12,6 +12,20 @@
 </head>
 <body>
 <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">RECORDS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="insert.php">NEW</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="row">
         <div class="col-md-12 mt-5">
             <h1 class="text-center">PHP OOP CRUD PRACT</h1>
@@ -25,6 +39,35 @@
             $model = new Model();
             $id = $_REQUEST['id'];
             $row = $model->edit($id);
+
+            if (isset($_POST['update'])) {
+                
+                if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['mobile']) && isset($_POST['address'])) {
+                    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['mobile']) && !empty($_POST['address'])) {
+
+                        $data['id'] = $id;
+                        $data['name'] = $_POST['name'];
+                        $data['email'] = $_POST['email'];
+                        $data['mobile'] = $_POST['mobile'];
+                        $data['address'] = $_POST['address'];
+
+                        $update = $model->update($data);
+
+                        if ($update){
+                            echo "<script>alert('record success fully')</script>";
+                            echo "<script>window.location.href = 'index.php'</script>";
+                        }else{
+                            echo "<script>alert('empty')</script>";
+                            echo "<script>window.location.href = 'index.php'</script>";
+                        }
+
+                    } else {
+                        echo "<script>alert('record update failed')</script>";
+                        header('Location: edit.php?id=$id');
+                    }
+                }
+
+            }
 
             ?>
 
@@ -43,10 +86,10 @@
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <input type="text" name="address" rows="3" class="form-control" value="<?= $row['address'] ?>">
+                    <textarea type="text" name="address" cols="" rows="3" class="form-control"><?= $row['address'] ?></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="update" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>

@@ -14,6 +14,20 @@
 <body>
 
 <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">RECORDS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="insert.php">NEW</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="row">
         <div class="col-md-12 mt-5">
             <h1 class="text-center">READ RECORD</h1>
@@ -29,10 +43,7 @@
             if (!empty($row)) { ?>
 
                 <div class="card">
-                    <div class="card-header">
-                        single record
-
-                    </div>
+                    <div class="card-header">single record</div>
                     <div class="card-body">
                         <p>Name: <?php echo $row['name']; ?></p>
                         <p>Email: <?php echo $row['email']; ?></p>

@@ -8,11 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>OOP PHP CRUD - RECORDS</title>
+    <title>PHP OOP CRUD</title>
 </head>
 <body>
-
 <div class="container">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,53 +28,42 @@
 
     <div class="row">
         <div class="col-md-12 mt-5">
-            <h1 class="text-center">OOP PHP CRUD - Records</h1>
-            <hr style="height: 1px; background: black; color: black;">
+            <h1 class="text-center">PHP OOP CRUD PRACT</h1>
+            <hr style="height: 1px; color: black; background-color: black;">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>NAME</th>
-                    <th>EMAIL</th>
-                    <th>MOBILE</th>
-                    <th>ADDRESS</th>
-                    <th>ACTIONS</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                include_once "model.php";
-                $model = new Model();
-                $rows = $model->fetch();
-                if (!empty($rows)) {
-                    foreach ($rows as $row) { ?>
-                        <tr>
-                            <td><?= $row['id'] ?></td>
-                            <td><?= $row['name'] ?></td>
-                            <td><?= $row['email'] ?></td>
-                            <td><?= $row['mobile'] ?></td>
-                            <td><?= $row['address'] ?></td>
-                            <td>
-                                <a href="read.php?id=<?= $row['id'] ?>" class="badge badge-info">read</a>
-                                <a href="delete.php?id=<?= $row['id'] ?>" class="badge badge-danger">delete</a>
-                                <a href="edit.php?id=<?= $row['id'] ?>" class="badge badge-success">edit</a>
-                            </td>
-                        </tr>
-                    <?php }
-                } else {
-                    echo "no data";
-                } ?>
-                </tbody>
-            </table>
+        <div class="col-md-5 mx-auto">
+            <?php
+            include_once "model.php";
+            $model = new Model();
+            $insert = $model->insert();
+            ?>
+
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Mobile No.</label>
+                    <input type="text" name="mobile" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <textarea type="text" name="address" cols="" rows="3" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
-
 </div>
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
