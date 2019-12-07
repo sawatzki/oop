@@ -74,7 +74,7 @@ class Model
 
     public function fetch_single($id)
     {
-        $data = "";
+        $data = null;
 
         $query = "SELECT * FROM records WHERE id = '$id'";
         if ($sql = $this->conn->query($query)) {
@@ -85,5 +85,16 @@ class Model
         return $data;
     }
 
+    public function edit($id){
+        $data = null;
+
+        $query = "SELECT * FROM records WHERE id = '$id'";
+        if($sql = $this->conn->query($query)){
+            while ($row = $sql->fetch_assoc()){
+                $data = $row;
+            }
+        }
+        return $data;
+    }
 
 }
