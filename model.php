@@ -33,7 +33,7 @@ class Model
                     if ($this->conn->query($query)) {
                         echo "<script>alert('records inserted successfully');</script>";
                         echo "<script>window.location.href = 'index.php'</script>";
-                    }else{
+                    } else {
                         echo "<script>alert('connection failed');</script>";
                         echo "<script>window.location.href = 'index.php'</script>";
                     }
@@ -46,28 +46,44 @@ class Model
         }
     }
 
-    public function fetch(){
+    public function fetch()
+    {
         $data = null;
 
         $query = "SELECT * FROM records";
-        if($sql = $this->conn->query($query)){
-            while($row = mysqli_fetch_assoc($sql)){
+        if ($sql = $this->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;
             }
         }
         return $data;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         $query = "DELETE FROM records WHERE id = '$id'";
 
-        if($sql = $this->conn->query($query)){
+        if ($sql = $this->conn->query($query)) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
+
+    public function fetch_single($id)
+    {
+        $data = "";
+
+        $query = "SELECT * FROM records WHERE id = '$id'";
+        if ($sql = $this->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+
 
 }
