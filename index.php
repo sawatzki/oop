@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +11,6 @@
     <title>PHP OOP CRUD</title>
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-5">
@@ -22,6 +20,12 @@
     </div>
     <div class="row">
         <div class="col-md-5 mx-auto">
+            <?php
+            include_once "model.php";
+            $model = new Model();
+            $insert = $model->insert();
+            ?>
+
             <form action="" method="post">
                 <div class="form-group">
                     <label for="">Name</label>
@@ -37,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <input type="text" name="address" rows="3"  class="form-control">
+                    <input type="text" name="address" rows="3" class="form-control">
                 </div>
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
