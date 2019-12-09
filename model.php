@@ -36,7 +36,7 @@ Class Model
                       </button>
                     </div>
                     ";
-                    }else{
+                    } else {
                         echo "
                     <div class='alert alert-error alert-dismissible fade show' role='alert'>
                       <strong>failed to add note</strong>
@@ -60,4 +60,16 @@ Class Model
             }
         }
     }
+
+    public function fetch()
+    {
+        $data = null;
+
+        $stmt = $this->conn->prepare("SELECT * FROM notes");
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+
+        return $data;
+    }
+
 }
