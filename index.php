@@ -14,13 +14,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center mt-5">OOP PHP PDO AJAX CRUD</h1>
+            <h1 class="text-center mt-5">OOP PHP PDO CRUD AJAX</h1>
             <hr style="height: 1px; color: black; background: black;">
         </div>
     </div>
     <div class="row">
         <div class="col-md-5 mx-auto">
-            <form action="">
+            <form action="" id="form">
+                <div id="result"></div>
                 <div class="form-group">
                     <label for="">Title</label>
                     <input type="text" id="title" class="form-control">
@@ -52,6 +53,36 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script>
+
+    $(document).on('click', '#submit', function(e){
+        e.preventDefault();
+
+        let title = $("#title").val();
+        let description = $("#description").val();
+        let submit = $("#submit").val();
+
+        $("#form")[0].reset();
+
+        $.ajax({
+            url: "insert.php",
+            method: "post",
+            data: {
+                title: title,
+                description: description,
+                submit: submit
+            },
+            success: function(data){
+                $("#result").html(data);
+            }
+        });
+
+
+        alert(title);
+    });
+
+</script>
+
 
 </body>
 </html>
