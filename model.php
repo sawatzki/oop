@@ -72,4 +72,30 @@ Class Model
         return $data;
     }
 
+    public function delete($id){
+
+        $query = "DELETE FROM notes WHERE id = '$id'";
+
+        if($conn = $this->conn->exec($query)){
+            echo "
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                  <strong>note delete successfully</strong>
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>
+                ";
+        }else{
+            echo "
+                <div class='alert alert-error alert-dismissible fade show' role='alert'>
+                  <strong>note not delete</strong>
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>
+                ";
+        }
+
+    }
+
 }

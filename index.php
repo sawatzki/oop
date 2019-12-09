@@ -39,6 +39,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 mt-1">
+            <div id="info"></div>
             <div id="fetch"></div>
         </div>
     </div>
@@ -86,7 +87,7 @@
 
     });
 
-    // Fetch records
+    // Fetch notes
 
     function fetch (){
 
@@ -100,6 +101,29 @@
 
     }
     fetch();
+
+    // Delete note
+
+    $(document).on("click", ".delete", function (){
+
+        if(window.confirm("this note delete ?")) {
+            let id = $(this).attr('value');
+
+            $.ajax({
+                url: "delete.php",
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    fetch();
+                    $("#info").html(data);
+                }
+            });
+        }else{
+            return false;
+        }
+    });
 </script>
 
 

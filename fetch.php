@@ -23,9 +23,9 @@ $rows = $model->fetch();
                 <td><?= $row['title']; ?></td>
                 <td><?= $row['description']; ?></td>
                 <td>
-                    <a href="#" id="read" class="badge badge-info">Read</a>
-                    <a href="#" id="edit" class="badge badge-warning">Edit</a>
-                    <a href="#" id="delete" class="badge badge-danger">Delete</a>
+                    <a href="#" class="read badge badge-info" value="<?= $row['id'] ?>">Read</a>
+                    <a href="#" class="edit badge badge-warning" value="<?= $row['id'] ?>">Edit</a>
+                    <a href="#" class="delete badge badge-danger" value="<?= $row['id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php }
