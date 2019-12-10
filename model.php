@@ -119,4 +119,46 @@ Class Model
         return $data;
     }
 
+    public function update($data){
+        if(isset($data['update'])){
+
+            if(isset($data['title']) && isset($data['description'])){
+                if(!empty($data['title']) && !empty($data['description'])){
+
+                    $title = $data['title'];
+                    $description = $data['description'];
+                    $id = $data['id'];
+
+                    $query = "UPDATE notes SET title='$title', description='$description' WHERE id='$id'";
+                    if($sql = $this->conn->exec($query)){
+                        echo "
+                            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                              <strong>Note update successfully</strong>
+                              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                              </button>
+                            </div>
+                        ";
+                    }else{
+                        echo "
+                            <div class='alert alert-error alert-dismissible fade show' role='alert'>
+                              <strong>Failed to update note</strong>
+                              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                              </button>
+                            </div>
+                        ";
+                    }
+
+                    return true;
+                }
+
+            }
+
+        }
+
+
+
+    }
+
 }

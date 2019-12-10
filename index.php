@@ -31,7 +31,7 @@
                     <textarea name="description" id="description" cols="" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="update" class="btn btn-outline-primary">Submit</button>
+                    <button type="submit" id="submit" class="btn btn-outline-primary">Submit</button>
                 </div>
             </form>
 
@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="update" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -204,11 +204,36 @@
                 id: id
             },
             success: function (data) {
-                console.log(data);
                 $("#edit_data").html(data);
             }
         });
 
+    });
+
+    // note update
+
+    $(document).on("click", "#update", function(e){
+        e.preventDefault();
+
+        let edit_title = $("#edit_title").val();
+        let edit_description = $("#edit_description").val();
+        let update = $("#update").val();
+        let id = $("#edit_id").attr("value");
+
+        $.ajax({
+            url: "update.php",
+            type: "post",
+            data: {
+              title: edit_title,
+              description: edit_description,
+              update: update,
+              id: id
+            },
+            success: function (data) {
+                fetch();
+                $("#info").html(data);
+            }
+        });
     });
 
 </script>
