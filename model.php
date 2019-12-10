@@ -109,5 +109,14 @@ Class Model
         return $data;
     }
 
+    public function edit($id)
+    {
+        $data = null;
+        $query = "SELECT * FROM notes WHERE id = '$id'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $data = $stmt->fetch();
+        return $data;
+    }
 
 }

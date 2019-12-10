@@ -31,7 +31,7 @@
                     <textarea name="description" id="description" cols="" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="submit" class="btn btn-outline-primary">Submit</button>
+                    <button type="submit" id="update" class="btn btn-outline-primary">Submit</button>
                 </div>
             </form>
 
@@ -65,6 +65,30 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit note</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="edit_data"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 <!-- Optional JavaScript -->
@@ -167,6 +191,25 @@
 
     });
 
+    // note edit
+    $(document).on("click", ".edit", function (e) {
+        e.preventDefault();
+
+        let id = $(this).attr("value");
+
+        $.ajax({
+            url: "edit.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function (data) {
+                console.log(data);
+                $("#edit_data").html(data);
+            }
+        });
+
+    });
 
 </script>
 

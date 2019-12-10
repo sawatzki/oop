@@ -24,7 +24,7 @@ $rows = $model->fetch();
                 <td><?= $row['description']; ?></td>
                 <td>
                     <a href="#" class="read badge badge-info" value="<?= $row['id'] ?>" data-toggle="modal" data-target="#exampleModal">Read</a>
-                    <a href="#" class="edit badge badge-warning" value="<?= $row['id'] ?>">Edit</a>
+                    <a href="#" class="edit badge badge-warning" value="<?= $row['id'] ?>" data-toggle="modal" data-target="#editModal">Edit</a>
                     <a href="#" class="delete badge badge-danger" value="<?= $row['id'] ?>">Delete</a>
                 </td>
             </tr>
