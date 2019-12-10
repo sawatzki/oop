@@ -44,6 +44,28 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Single data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="read_data"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -62,7 +84,7 @@
         crossorigin="anonymous"></script>
 <script>
 
-    $(document).on('click', '#submit', function(e){
+    $(document).on('click', '#submit', function (e) {
         e.preventDefault();
 
         let title = $("#title").val();
@@ -79,7 +101,7 @@
                 description: description,
                 submit: submit
             },
-            success: function(data){
+            success: function (data) {
                 fetch();
                 $("#result").html(data);
             }
@@ -89,24 +111,25 @@
 
     // Fetch notes
 
-    function fetch (){
+    function fetch() {
 
         $.ajax({
             url: "fetch.php",
             type: "post",
-            success: function (data){
+            success: function (data) {
                 $("#fetch").html(data);
             }
         });
 
     }
+
     fetch();
 
     // Delete note
 
-    $(document).on("click", ".delete", function (){
+    $(document).on("click", ".delete", function () {
 
-        if(window.confirm("this note delete ?")) {
+        if (window.confirm("this note delete ?")) {
             let id = $(this).attr('value');
 
             $.ajax({
@@ -120,10 +143,31 @@
                     $("#info").html(data);
                 }
             });
-        }else{
+        } else {
             return false;
         }
     });
+
+    // mote read
+    $(document).on("click", ".read", function (e) {
+        e.preventDefault();
+
+        let id = $(this).attr("value");
+
+        $.ajax({
+            url: "read.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function (data) {
+                $("#read_data").html(data);
+            }
+        });
+
+    });
+
+
 </script>
 
 

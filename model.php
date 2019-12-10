@@ -72,11 +72,12 @@ Class Model
         return $data;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         $query = "DELETE FROM notes WHERE id = '$id'";
 
-        if($conn = $this->conn->exec($query)){
+        if ($conn = $this->conn->exec($query)) {
             echo "
                 <div class='alert alert-success alert-dismissible fade show' role='alert'>
                   <strong>note delete successfully</strong>
@@ -85,7 +86,7 @@ Class Model
                   </button>
                 </div>
                 ";
-        }else{
+        } else {
             echo "
                 <div class='alert alert-error alert-dismissible fade show' role='alert'>
                   <strong>note not delete</strong>
@@ -97,5 +98,16 @@ Class Model
         }
 
     }
+
+    public function read($id)
+    {
+        $data = null;
+        $query = "SELECT * FROM notes WHERE id = '$id'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $data = $stmt->fetch();
+        return $data;
+    }
+
 
 }
