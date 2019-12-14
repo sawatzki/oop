@@ -29,7 +29,8 @@
 </header>
 
 <div class="content mt-5 pt-2">
-    <?php require_once "resources/views/$view/$view.php" ?>
+
+    <?php require_once "resources/views/$view/$action.php"; ?>
 </div>
 
 <footer class="fixed-bottom">
