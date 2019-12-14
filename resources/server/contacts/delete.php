@@ -1,10 +1,7 @@
 <?php
-
-
-$id = $_POST['id'];
-
 include_once "../../../core/models/Contacts.php";
 
+$id = $_POST['id'];
 $contacts = new Contacts();
 $isDelete = $contacts->delete($id);
 

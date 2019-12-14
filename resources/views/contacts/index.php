@@ -1,9 +1,10 @@
 <h2>KONTAKTE</h2>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#contactInsert"
+<button class="btn btn-primary bg-primary navbar-toggler" type="button" data-toggle="collapse" data-target="#contactInsert"
         aria-controls="navbarNavAltMarkup" aria-expanded="" aria-label="Toggle navigation">
-    INSERT
+    Neu
 </button>
-<div id="contactInsert" class="<!--collapse--> col-md-5">
+<div id="contactEdit" class="<!--collapse -->col-md-5 mx-auto fixed-top bg-light"></div>
+<div id="contactInsert" class="collapse col-md-5 mx-auto fixed-top bg-light">
 
     <form action="">
         <div class="form-group">
@@ -27,5 +28,6 @@
         </div>
     </form>
 </div>
+
 
 <div id="contacts"></div>

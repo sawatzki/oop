@@ -1,6 +1,6 @@
 <?php
 
-include_once "../../core/Model.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/artem/core/Model.php";
 
 class Notes extends Model
 {

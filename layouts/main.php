@@ -29,8 +29,7 @@
 </header>
 
 <div class="content mt-5 pt-2">
-
-    <?php require_once "resources/views/$view/$action.php"; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/artem/resources/views/$view/$action.php"; ?>
 </div>
 
 <footer class="fixed-bottom">
@@ -57,7 +56,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 <script src="resources/js/main.js" type="text/javascript"></script>
-
 
 </body>
 </html>
